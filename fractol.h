@@ -17,6 +17,9 @@ typedef struct s_fractol
     void *cnx_wind;
     void *new_window;
     void *imag;
+    int *bpp;
+    int *line_pixel;
+    int *endian;
 } t_fractol;
 
 void fractol_init(t_fractol *fractol);
