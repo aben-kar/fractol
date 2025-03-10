@@ -1,5 +1,5 @@
 # Compiler
-CC = gcc
+CC = cc
 
 # Compiler flags
 CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux
@@ -10,7 +10,7 @@ MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 # Source files
-SRCS = main.c
+SRCS = main.c fractol.c
 OBJS = $(SRCS:.c=.o)
 
 # Executable name

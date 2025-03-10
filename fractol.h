@@ -7,8 +7,19 @@
 #include <math.h>
 #include "minilibx-linux/mlx.h"
 
+#define WIDTH 800
+#define HEIGHT 800
 
+typedef struct s_fractol
+{
+    char *name;
+    char *addr;
+    void *cnx_wind;
+    void *new_window;
+    void *imag;
+} t_fractol;
 
+void fractol_init(t_fractol *fractol);
 
 #endif
 
