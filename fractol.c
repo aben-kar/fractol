@@ -32,8 +32,20 @@ void fractol_init(t_fractol *fractol)
                                         &fractol->endian);
 }
 
-// void fractol_render(t_fractol *fractol)
-// {
+void fractol_render(t_fractol *fractol)
+{
+    int x;
+    int y;
 
-//     int x
-// } 👉
+    y = 0;
+    while (y < HEIGHT)
+    {
+        x = 0;
+        while (x < WIDTH)
+        {
+            handele_pixel(x, y, fractol);
+            x++;
+        }
+        y++;
+    }
+} 

@@ -10,6 +10,13 @@
 #define WIDTH 800
 #define HEIGHT 800
 
+typedef struct s_complex
+{
+    double x;
+    double y;
+} t_complex;
+
+
 typedef struct s_fractol
 {
     char *name;
@@ -24,6 +31,8 @@ typedef struct s_fractol
 
 void fractol_init(t_fractol *fractol);
 void    error_message(void);
+t_complex sum_complex(t_complex z1, t_complex z2);
+t_complex square_complex(t_complex z);
 
 #endif
 
