@@ -27,6 +27,6 @@ int  main(int ac, char **av)
 		mlx_loop(fractol.cnx_wind);
 	}
     else
-        write (2, "Error\n", 6);
+        error_message();
 
 }

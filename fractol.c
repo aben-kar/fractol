@@ -3,13 +3,16 @@
 void malloc_error()
 {
     perror("Problems with malloc");
+    exit (1);
 }
 
 void fractol_init(t_fractol *fractol)
 {
     fractol->cnx_wind = mlx_init();
     if (fractol->cnx_wind == NULL)
+    {
         malloc_error();
+    }
     fractol->new_window = mlx_new_window(fractol->cnx_wind, WIDTH, HEIGHT, fractol->name);
     if (fractol->new_window == NULL)
     {
@@ -28,3 +31,9 @@ void fractol_init(t_fractol *fractol)
     fractol->addr = mlx_get_data_addr(fractol->cnx_wind, &fractol->bpp, &fractol->line_pixel,
                                         &fractol->endian);
 }
+
+// void fractol_render(t_fractol *fractol)
+// {
+
+//     int x
+// } 👉
