@@ -10,7 +10,7 @@ MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 # Source files
-SRCS = main.c fractol.c fractal_utils.c
+SRCS = main.c fractol.c fractal_utils.c fractol_rendre.c fractol_rend_utils.c
 OBJS = $(SRCS:.c=.o)
 
 # Executable name

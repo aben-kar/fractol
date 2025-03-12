@@ -24,6 +24,7 @@ int  main(int ac, char **av)
 	{
 		fractol.name = av[1];
 		fractol_init(&fractol);
+		fractol_render(&fractol);
 		mlx_loop(fractol.cnx_wind);
 	}
     else
