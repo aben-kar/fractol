@@ -15,7 +15,18 @@ void handele_pixel(int x, int y, t_fractol *fractol)
 
     while (i < fractol->iteration)
     {
-        z = sum_complex(square_complex(z), c);
+        // z = sum_complex(square_complex(z), c);
+
+        // Genaral formule
+        // Z = Z^2 + C
+        double tmp_real;
+        tmp_real = (z.x * z.x) - (z.y * z.y);
+        z.y = 2 * z.x * z.y;
+        z.x = tmp_real;
+
+        //Addinng the c value
+        z.x += c.x;
+        z.y += c.y;
 
         if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
         {
@@ -23,9 +34,9 @@ void handele_pixel(int x, int y, t_fractol *fractol)
             my_pixel_put(x, y, fractol, color);
             return;
         }
-        ++i;
+        i++;
     }
-    my_pixel_put(x, y, fractol, PINK);
+    my_pixel_put(x, y, fractol, BLACK);
 }
 
 void fractol_render(t_fractol *fractol)
@@ -33,14 +44,16 @@ void fractol_render(t_fractol *fractol)
     int x;
     int y;
 
-    y = -1;
-    while (++y < HEIGHT)
+    y = 0;
+    while (y < HEIGHT)
     {
-        x = -1;
-        while (++x < WIDTH)
+        x = 0;
+        while (x < WIDTH)
         {
             handele_pixel(x, y, fractol);
+            x++;
         }
+        y++;
     }
     mlx_put_image_to_window(fractol->cnx_wind, fractol->new_window, fractol->imag, 0, 0);
 }

@@ -5,7 +5,7 @@ void error_message(void) {
     printf("  - \"Mandelbrot\"\n");
     printf("  - \"Julia <number> <number>\"\n");
     printf("For better experience, we recommend you to enter a number between -2 and 2.\n");
-    exit(1); // Exit after displaying the error
+    exit(1);
 }
 
 void data_init(t_fractol *fractol)
