@@ -7,8 +7,8 @@
 #include <math.h>
 #include "minilibx-linux/mlx.h"
 
-#define WIDTH 600
-#define HEIGHT 600
+#define WIDTH 500
+#define HEIGHT 500
 
 #define BLACK       0x000000  // Black
 #define WHITE       0xFFFFFF  // White
@@ -54,8 +54,8 @@ void    error_message(void);
 // t_complex square_complex(t_complex z);
 double map(double num, double new_min, double new_max, double old_min, double old_max);
 void data_init(t_fractol *fractol);
-// void my_pixel_put(int x, int y, t_fractol *fractol, int color);
-void my_pixel_put(int x, int y, void *img, int color);
+void my_pixel_put(int x, int y, t_fractol *fractol, int color);
+// void my_pixel_put(int x, int y, void *img, int color);
 void fractol_render(t_fractol *fractol);
 
 

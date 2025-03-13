@@ -22,11 +22,19 @@ double map(double num, double new_min, double new_max, double old_min, double ol
 //     return(result);
 // }
 
-void my_pixel_put(int x, int y, void *img, int color)
-{
-    int ofsset;
+// void my_pixel_put(int x, int y, void *img, int color)
+// {
+//     int ofsset;
 
-    t_fractol *fractol = (t_fractol *)img; 
-    ofsset = (y * fractol->line_pixel) + (x * (fractol->bpp / 8));
-    *(unsigned int *)(fractol->addr + ofsset) = color;
+//     t_fractol *fractol = (t_fractol *)img; 
+//     ofsset = (y * fractol->line_pixel) + (x * (fractol->bpp / 8));
+//     *(unsigned int *)(fractol->addr + ofsset) = color;
+// }
+
+void my_pixel_put(int x, int y, t_fractol *fractol, int color)
+{
+    int offset;
+
+    offset = (y * fractol->line_pixel) + (x * (fractol->bpp / 8));
+    *(unsigned int *)(fractol->addr + offset) = color;
 }
