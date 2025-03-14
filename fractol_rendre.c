@@ -13,7 +13,8 @@ void handele_pixel(int x, int y, t_fractol *fractol)
     c.x = map(x, -2, +2, 0, WIDTH);
     c.y = map(y, +2, -2, 0, HEIGHT);
 
-    while (i < fractol->iteration)
+
+    while (i < fractol->iteration) //42
     {
 
         // Genaral formule
@@ -29,13 +30,14 @@ void handele_pixel(int x, int y, t_fractol *fractol)
 
         if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
         {
-            color = map(i, PINK, ORANGE, 0, fractol->iteration);
+            // color = map(i, BLUE, CYAN, 0, fractol->iteration);
+            color = (i * 15) << 16 | (i * 15) << 8 | (i * 8);
             my_pixel_put(x, y, fractol, color);
             return;
         }
         i++;
     }
-    my_pixel_put(x, y, fractol, PURPLE);
+    my_pixel_put(x, y, fractol, CYAN);
 }
 
 void fractol_render(t_fractol *fractol)
