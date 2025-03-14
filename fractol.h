@@ -7,8 +7,8 @@
 #include <math.h>
 #include "minilibx-linux/mlx.h"
 
-#define WIDTH 500
-#define HEIGHT 500
+#define WIDTH 800
+#define HEIGHT 800
 
 #define BLACK       0x000000  // Black
 #define WHITE       0xFFFFFF  // White

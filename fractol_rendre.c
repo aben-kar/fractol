@@ -1,6 +1,5 @@
 #include "fractol.h"
 
-
 void handele_pixel(int x, int y, t_fractol *fractol)
 {
     t_complex z;
@@ -16,7 +15,6 @@ void handele_pixel(int x, int y, t_fractol *fractol)
 
     while (i < fractol->iteration)
     {
-        // z = sum_complex(square_complex(z), c);
 
         // Genaral formule
         // Z = Z^2 + C
@@ -31,13 +29,13 @@ void handele_pixel(int x, int y, t_fractol *fractol)
 
         if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
         {
-            color = map(i, BLACK, WHITE, 0, fractol->iteration);
+            color = map(i, PINK, ORANGE, 0, fractol->iteration);
             my_pixel_put(x, y, fractol, color);
             return;
         }
         i++;
     }
-    my_pixel_put(x, y, fractol, RED);
+    my_pixel_put(x, y, fractol, PURPLE);
 }
 
 void fractol_render(t_fractol *fractol)
