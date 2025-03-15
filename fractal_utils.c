@@ -14,11 +14,12 @@ void data_init(t_fractol *fractol)
     fractol->iteration = 42;
     fractol->shift_x = 0.0;
     fractol->shift_y = 0.0;
+    fractol->zoom = 1.0;
 }
 
 void event_init(t_fractol *fractol)
 {
     mlx_hook(fractol->new_window, 02, 1L<<0, key_handel, fractol);
-    // mlx_hook(fractol->new_window, 04, 1L<<2, mouse_handel, fractol);
+    mlx_hook(fractol->new_window, 04, 1L<<2, mouse_handel, fractol);
     mlx_hook(fractol->new_window, 17, 1L<<17, close_handel, fractol);
 }

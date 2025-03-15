@@ -10,9 +10,8 @@ void handele_pixel(int x, int y, t_fractol *fractol)
     z.x = 0.0;
     z.y = 0.0;
 
-    c.x = map(x, -2, +2, 0, WIDTH) + fractol->shift_x;
-    c.y = map(y, +2, -2, 0, HEIGHT) + fractol->shift_y;
-
+    c.x = (map(x, -2, +2, 0, WIDTH) * fractol->zoom) + fractol->shift_x;
+    c.y = (map(y, +2, -2, 0, HEIGHT) * fractol->zoom) + fractol->shift_y;
 
     while (i < fractol->iteration) //42
     {
@@ -56,13 +55,5 @@ void fractol_render(t_fractol *fractol)
         }
         y++;
     }
-    if (fractol->imag && fractol->new_window)
-        mlx_put_image_to_window(fractol->cnx_wind, fractol->new_window, fractol->imag, 0, 0);
-    else
-    {
-        mlx_destroy_display(fractol->cnx_wind);
-        mlx_destroy_window(fractol->cnx_wind, fractol->new_window);
-        free(fractol->cnx_wind);
-        exit(1);
-    }
+    mlx_put_image_to_window(fractol->cnx_wind, fractol->new_window, fractol->imag, 0, 0);
 }

@@ -50,6 +50,7 @@ typedef struct s_fractol
     int iteration;
     double shift_x;
     double shift_y;
+    double zoom;
 } t_fractol;
 
 void fractol_init(t_fractol *fractol);
@@ -61,6 +62,7 @@ void fractol_render(t_fractol *fractol);
 void event_init(t_fractol *fractol);
 int key_handel(int keysym, t_fractol * fractol);
 int close_handel(t_fractol *fractol);
+int mouse_handel(int button, int x, int y, t_fractol *fractol);
 
 
 #endif
