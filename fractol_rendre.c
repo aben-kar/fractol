@@ -10,8 +10,8 @@ void handele_pixel(int x, int y, t_fractol *fractol)
     z.x = 0.0;
     z.y = 0.0;
 
-    c.x = map(x, -2, +2, 0, WIDTH);
-    c.y = map(y, +2, -2, 0, HEIGHT);
+    c.x = map(x, -2, +2, 0, WIDTH) + fractol->shift_x;
+    c.y = map(y, +2, -2, 0, HEIGHT) + fractol->shift_y;
 
 
     while (i < fractol->iteration) //42
@@ -30,14 +30,14 @@ void handele_pixel(int x, int y, t_fractol *fractol)
 
         if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
         {
-            // color = map(i, BLUE, CYAN, 0, fractol->iteration);
-            color = (i * 15) << 16 | (i * 15) << 8 | (i * 8);
+            color = map(i, BLACK, WHITE, 0, fractol->iteration);
+            // color = (i * 15) << 16 | (i * 15) << 8 | (i * 8);
             my_pixel_put(x, y, fractol, color);
             return;
         }
         i++;
     }
-    my_pixel_put(x, y, fractol, CYAN);
+    my_pixel_put(x, y, fractol, BLACK);
 }
 
 void fractol_render(t_fractol *fractol)
@@ -56,5 +56,13 @@ void fractol_render(t_fractol *fractol)
         }
         y++;
     }
-    mlx_put_image_to_window(fractol->cnx_wind, fractol->new_window, fractol->imag, 0, 0);
+    if (fractol->imag && fractol->new_window)
+        mlx_put_image_to_window(fractol->cnx_wind, fractol->new_window, fractol->imag, 0, 0);
+    else
+    {
+        mlx_destroy_display(fractol->cnx_wind);
+        mlx_destroy_window(fractol->cnx_wind, fractol->new_window);
+        free(fractol->cnx_wind);
+        exit(1);
+    }
 }
