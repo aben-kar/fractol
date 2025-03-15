@@ -36,7 +36,7 @@ void handele_pixel(int x, int y, t_fractol *fractol)
         }
         i++;
     }
-    my_pixel_put(x, y, fractol, BLACK);
+    my_pixel_put(x, y, fractol, WHITE);
 }
 
 void fractol_render(t_fractol *fractol)

@@ -34,7 +34,7 @@ void fractol_init(t_fractol *fractol)
         free(fractol->cnx_wind);
         malloc_error();
     }
-    
+    // gestion deyal events
     event_init(fractol);
     data_init(fractol);
 }
