@@ -8,6 +8,7 @@
 #include "minilibx-linux/mlx.h"
 #include <X11/X.h>
 #include <X11/keysym.h>
+#include <stdlib.h>
 
 #define WIDTH 800
 #define HEIGHT 800
@@ -51,10 +52,13 @@ typedef struct s_fractol
     double shift_x;
     double shift_y;
     double zoom;
+    double julia_x;
+    double julia_y;
 } t_fractol;
 
 void fractol_init(t_fractol *fractol);
 void    error_message(void);
+void malloc_error();
 double map(double num, double new_min, double new_max, double old_min, double old_max);
 void data_init(t_fractol *fractol);
 void my_pixel_put(int x, int y, t_fractol *fractol, int color);
@@ -63,6 +67,15 @@ void event_init(t_fractol *fractol);
 int key_handel(int keysym, t_fractol * fractol);
 int close_handel(t_fractol *fractol);
 int mouse_handel(int button, int x, int y, t_fractol *fractol);
+// julia
+void fractol_render_julia(t_fractol *fractol);
+double	ft_atof(const char *s);
+void fractol_init_julia(t_fractol *fractol);
+void event_init_julia(t_fractol *fractol);
+int close_handel_julia(t_fractol *fractol);
+int key_handel_julia(int keysym, t_fractol * fractol);
+int mouse_handel_julia(int button, int x, int y, t_fractol *fractol);
+
 
 
 #endif
