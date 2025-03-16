@@ -10,7 +10,7 @@ MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 # Source files
-SRCS = main.c fractol.c fractol_utils.c fractol_rendre.c fractol_rend_utils.c event_utils.c julia_utils.c fractol_rend_julia.c event_utils_julia.c
+SRCS = main.c main_utils.c mandelbrot.c mandelbrot_utils.c julia.c julia_utils.c event_utils_mandelbrot.c event_utils_julia.c utils_function.c function_helper.c
 OBJS = $(SRCS:.c=.o)
 
 # Executable name

@@ -2,81 +2,107 @@
 #define FRACTOL_H
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
-#include "minilibx-linux/mlx.h"
+#include <unistd.h>
+// #include "minilibx-linux/mlx.h"
+#include <mlx.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
 #include <stdlib.h>
+# include <stdint.h>
 
+#define BLACK       0x000000
+#define WHITE       0xFFFFFF
+#define RED         0xFF0000
+#define GREEN       0x00FF00
+#define BLUE        0x0000FF
+#define YELLOW      0xFFFF00 
+#define CYAN        0x00FFFF
+#define MAGENTA     0xFF00FF
+#define ORANGE      0xFFA500
+#define PINK        0xFF69B4
+#define PURPLE      0x800080
+#define NEON_GREEN  0x39FF14
+#define TURQUOISE   0x40E0D0
+#define VIOLET      0x8A2BE2
+#define PSYCHEDELIC 0x7F00FF
+#define RAINBOW     0xFF1493 
+
+// width and height
 #define WIDTH 800
 #define HEIGHT 800
+#define HYPOTENUSE 4
 
-#define BLACK       0x000000  // Black
-#define WHITE       0xFFFFFF  // White
-#define RED         0xFF0000  // Red
-#define GREEN       0x00FF00  // Green
-#define BLUE        0x0000FF  // Blue
-#define YELLOW      0xFFFF00  // Yellow
-#define CYAN        0x00FFFF  // Cyan
-#define MAGENTA     0xFF00FF  // Magenta
-#define ORANGE      0xFFA500  // Orange
-#define PINK        0xFF69B4  // Pink
-#define PURPLE      0x800080  // Purple
-#define NEON_GREEN  0x39FF14  // Neon Green
-#define TURQUOISE   0x40E0D0  // Turquoise
-#define VIOLET      0x8A2BE2  // Violet
-#define PSYCHEDELIC 0x7F00FF  // Psychedelic Purple
-#define RAINBOW     0xFF1493  // Deep Pink, can be used for rainbow effects
-
-typedef struct s_complex
+// struct about complex
+typedef struct complex
 {
     double x;
     double y;
 } t_complex;
 
-
-typedef struct s_fractol
+// struct about mlx
+typedef struct fractol
 {
-    char *name;
-    char *addr;
     void *cnx_wind;
-    void *new_window;
-    void *imag;
+    void *cree_wind;
+    void *cree_img;
+    char *addr;
+    char *name;
     int bpp;
-    int line_pixel;
+    int len_line;
     int endian;
-    double escape_value;
     int iteration;
+    double julia_x;
+    double julia_y;
     double shift_x;
     double shift_y;
     double zoom;
-    double julia_x;
-    double julia_y;
 } t_fractol;
 
-void fractol_init(t_fractol *fractol);
-void    error_message(void);
-void malloc_error();
-double map(double num, double new_min, double new_max, double old_min, double old_max);
+typedef struct function
+{
+	int		j;
+	int		i;
+	char	**prr;
+	int		len_word;
+	char	**split_args;
+	int		k;
+    char *result;
+}	t_function;
+
+
+
+// main function
+int	ft_strncmp(char *s1, char *s2, int n);
+void print_error(void);
 void data_init(t_fractol *fractol);
-void my_pixel_put(int x, int y, t_fractol *fractol, int color);
-void fractol_render(t_fractol *fractol);
-void event_init(t_fractol *fractol);
-int key_handel(int keysym, t_fractol * fractol);
-int close_handel(t_fractol *fractol);
-int mouse_handel(int button, int x, int y, t_fractol *fractol);
-// julia
-void fractol_render_julia(t_fractol *fractol);
-double	ft_atof(const char *s);
+char	*ft_strchr(const char *str, int c);
+void	*ft_calloc(size_t count, size_t size);
+char	**ft_split(char const *s, char c);
+int	ft_atoi(const char *s);
+int	ft_strlen(const char *s);
+
+// Mandelbrot function
+void error_and_exit(void);
+void fractol_init_mandelbrot(t_fractol *fractol);
+double map(double num, double new_min, double new_max, double old_max);
+void	img_pix_put(t_fractol *fractol, int x, int y, int color);
+void fractol_rend_mandelbrot(t_fractol *fractol);
+void event_mandelbrot(t_fractol *fractol);
+
+// julia function
 void fractol_init_julia(t_fractol *fractol);
-void event_init_julia(t_fractol *fractol);
+void fractol_rend_julia(t_fractol *fractol);
+double  ft_atof(char *s);
+void event_julia(t_fractol *fractol);
+
+// event
+int close_handel(t_fractol *fractol);
+int key_handel(int keysym, t_fractol *fractol);
+int mouse_handel(int button, int x, int y, t_fractol *fractol);
 int close_handel_julia(t_fractol *fractol);
-int key_handel_julia(int keysym, t_fractol * fractol);
+int key_handel_julia(int keysym, t_fractol *fractol);
 int mouse_handel_julia(int button, int x, int y, t_fractol *fractol);
 
 
-
 #endif
-
