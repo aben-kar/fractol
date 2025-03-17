@@ -26,3 +26,26 @@ void event_mandelbrot(t_fractol *fractol)
     mlx_hook(fractol->cree_wind, 04, 1L<<2, mouse_handel, fractol);
     mlx_hook(fractol->cree_wind, 17, 1L<<17, close_handel, fractol);
 }
+
+void free_and_exit(t_fractol *fractol, int number)
+{
+    if (number == 1)
+    {
+        mlx_destroy_display(fractol->cnx_wind);
+        free(fractol->cnx_wind);
+    }
+    else if (number == 2)
+    {
+        mlx_destroy_window(fractol->cnx_wind, fractol->cree_wind);
+        mlx_destroy_display(fractol->cnx_wind);
+        free(fractol->cnx_wind);
+    }
+    else if (number == 3)
+    {
+        mlx_destroy_image(fractol->cnx_wind, fractol->cree_img);
+        mlx_destroy_window(fractol->cnx_wind, fractol->cree_wind);
+        mlx_destroy_display(fractol->cnx_wind);
+        free(fractol->cnx_wind);
+    }
+    error_and_exit();
+}

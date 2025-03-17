@@ -27,3 +27,9 @@ void event_julia(t_fractol *fractol)
     mlx_hook(fractol->cree_wind, 04, 1L<<2, mouse_handel_julia, fractol);
     mlx_hook(fractol->cree_wind, 17, 1L<<17, close_handel_julia, fractol);
 }
+
+void intializtion_imaginaire(t_fractol *fractol)
+{
+    fractol->julia_x = -0.8;
+    fractol->julia_y = 0.156;
+}

@@ -68,6 +68,8 @@ typedef struct function
 	char	**split_args;
 	int		k;
     char *result;
+    int color;
+    double tmp_real;
 }	t_function;
 
 
@@ -89,12 +91,14 @@ double map(double num, double new_min, double new_max, double old_max);
 void	img_pix_put(t_fractol *fractol, int x, int y, int color);
 void fractol_rend_mandelbrot(t_fractol *fractol);
 void event_mandelbrot(t_fractol *fractol);
+void free_and_exit(t_fractol *fractol, int number);
 
 // julia function
 void fractol_init_julia(t_fractol *fractol);
 void fractol_rend_julia(t_fractol *fractol);
 double  ft_atof(char *s);
 void event_julia(t_fractol *fractol);
+void intializtion_imaginaire(t_fractol *fractol);
 
 // event
 int close_handel(t_fractol *fractol);
