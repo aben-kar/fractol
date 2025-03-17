@@ -1,38 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acben-ka <acben-ka@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/17 04:01:54 by acben-ka          #+#    #+#             */
+/*   Updated: 2025/03/17 04:06:28 by acben-ka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
-    if (!s1 || !s2)
-        return (0);
-    
-    int i;
+	int	i;
 
-    i = 0;
-    while (n > 0 && s1[i] == s2[i] && s1[i] && s2[i])
-    {
-        i++;
-        n--;
-    }
-    if (n == 0)
-        return (0);
-    return (s1[i] - s2[i]);
+	if (!s1 || !s2)
+		return (0);
+	i = 0;
+	while (n > 0 && s1[i] == s2[i] && s1[i] && s2[i])
+	{
+		i++;
+		n--;
+	}
+	if (n == 0)
+		return (0);
+	return (s1[i] - s2[i]);
 }
 
-void print_error(void)
+void	print_error(void)
 {
-    printf("Please check your input again, make sure it matches one of these options:\n");
-    printf("  - \"Mandelbrot\"\n");
-    printf("  - \"Julia or Julia <number> <number>\"\n");
-    printf("For better experience, we recommend you to enter a number between -2 and 2.\n");
-    exit(1);
+	printf("Invalid input. Please use one of the following:\n");
+	printf("  - \"Mandelbrot\"\n");
+	printf("  - \"Julia or Julia <number> <number>\"\n");
+	printf("For better results, use numbers between -2 and 2.\n");
+	exit(1);
 }
 
-void data_init(t_fractol *fractol)
+void	data_init(t_fractol *fractol)
 {
-    fractol->iteration = 42;
-    fractol->shift_x = 0.0;
-    fractol->shift_y = 0.0;
-    fractol->zoom = 1.0;
+	fractol->iteration = 42;
+	fractol->shift_x = 0.0;
+	fractol->shift_y = 0.0;
+	fractol->zoom = 1.0;
 }
 
 char	*ft_strchr(const char *str, int c)
