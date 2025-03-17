@@ -6,7 +6,7 @@
 /*   By: acben-ka <acben-ka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:09:36 by acben-ka          #+#    #+#             */
-/*   Updated: 2025/03/17 04:11:05 by acben-ka         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:02:37 by acben-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	fractol_rend_julia(t_fractol *fractol)
 		x = 0;
 		while (x < WIDTH)
 		{
-			handel_pixel_mandelbrot(x, y, fractol);
+			handel_pixel_julia(x, y, fractol);
 			x++;
 		}
 		y++;

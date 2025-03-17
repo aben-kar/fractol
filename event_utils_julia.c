@@ -6,7 +6,7 @@
 /*   By: acben-ka <acben-ka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:15:34 by acben-ka          #+#    #+#             */
-/*   Updated: 2025/03/17 04:16:55 by acben-ka         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:35:30 by acben-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	mouse_handel_julia(int button, int x, int y, t_fractol *fractol)
 	(void) x;
 	(void) y;
 	if (button == Button5)
-		fractol->zoom *= 0.95;
-	else if (button == Button4)
 		fractol->zoom *= 1.05;
+	else if (button == Button4)
+		fractol->zoom *= 0.95;
 	fractol_rend_julia(fractol);
 	return (0);
 }

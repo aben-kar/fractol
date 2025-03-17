@@ -6,7 +6,7 @@
 /*   By: acben-ka <acben-ka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:13:50 by acben-ka          #+#    #+#             */
-/*   Updated: 2025/03/17 04:15:16 by acben-ka         ###   ########.fr       */
+/*   Updated: 2025/03/17 08:36:05 by acben-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	key_handel(int keysym, t_fractol *fractol)
 		fractol->shift_y -= (0.5 * fractol->zoom);
 	else if (keysym == XK_Down)
 		fractol->shift_y += (0.5 * fractol->zoom);
-	else if (keysym == 97)
+	else if (keysym == XK_a)
 		fractol->iteration += 10;
-	else if (keysym == 98)
+	else if (keysym == XK_b)
 		fractol->iteration -= 10;
 	fractol_rend_mandelbrot(fractol);
 	return (0);

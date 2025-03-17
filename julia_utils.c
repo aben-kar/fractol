@@ -6,31 +6,70 @@
 /*   By: acben-ka <acben-ka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:13:05 by acben-ka          #+#    #+#             */
-/*   Updated: 2025/03/17 04:13:06 by acben-ka         ###   ########.fr       */
+/*   Updated: 2025/03/17 09:51:55 by acben-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double	ft_atof(char *s)
+float	parse_integer_part(char *s, int *i)
 {
-	double	ret;
-	char	**sn;
+	float	ret;
 
 	ret = 0.0;
-	if (!s)
-		return (0);
-	if (!ft_strchr(s, '.'))
-		return (ft_atoi(s));
-	sn = ft_split(s, '.');
-	if (sn[0][0] != '-')
-		ret = ft_atoi(sn[0]) + (ft_atoi(sn[1]) / pow(10, ft_strlen(sn[1])));
-	else if (sn[0][0] == '-')
-		ret = ft_atoi(sn[0]) - (ft_atoi(sn[1]) / pow(10, ft_strlen(sn[1])));
-	free(sn[0]);
-	free(sn[1]);
-	free(sn);
+	while (ft_isdigit(s[*i]))
+	{
+		ret = ret * 10 + (s[*i] - '0');
+		(*i)++;
+	}
 	return (ret);
+}
+
+float	parse_decimal_part(char *s, int *i)
+{
+	float	decimal_part;
+	int		decimal_place;
+
+	decimal_part = 0.0;
+	decimal_place = 1;
+	if (s[*i] == '.')
+	{
+		(*i)++;
+		while (ft_isdigit(s[*i]))
+		{
+			decimal_part = decimal_part * 10 + (s[*i] - '0');
+			decimal_place *= 10;
+			(*i)++;
+		}
+	}
+	return (decimal_part / decimal_place);
+}
+
+float	ft_atof(char *s)
+{
+	float	ret;
+	int		sign;
+	int		i;
+
+	ret = 0.0;
+	sign = 1;
+	i = 0;
+	while (s[i] == 32 || (s[i] >= 9 && s[i] <= 13))
+		i++;
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			sign = -1;
+		i++;
+	}
+	if (!ft_isdigit(s[i]))
+		print_error();
+	check_for_alphabetic(s);
+	ret = parse_integer_part(s, &i);
+	ret += parse_decimal_part(s, &i);
+	if (s[i] != '\0')
+		print_error();
+	return (ret * sign);
 }
 
 void	event_julia(t_fractol *fractol)

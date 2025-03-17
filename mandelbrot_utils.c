@@ -6,7 +6,7 @@
 /*   By: acben-ka <acben-ka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 03:41:50 by acben-ka          #+#    #+#             */
-/*   Updated: 2025/03/17 03:57:36 by acben-ka         ###   ########.fr       */
+/*   Updated: 2025/03/17 09:26:25 by acben-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	error_and_exit(void)
 	exit(EXIT_FAILURE);
 }
 
-double	map(double num, double new_min, double new_max, double old_max)
+float	map(float num, float new_min, float new_max, float old_max)
 {
 	int		old_min;
-	double	result;
+	float	result;
 
 	old_min = 0;
 	result = (new_max - new_min) * (num - old_min);

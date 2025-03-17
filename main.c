@@ -6,7 +6,7 @@
 /*   By: acben-ka <acben-ka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 03:59:17 by acben-ka          #+#    #+#             */
-/*   Updated: 2025/03/17 04:00:46 by acben-ka         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:04:33 by acben-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 		else if ((ft_strncmp(av[1], "Julia", 6)) == 0)
 		{
 			if (ac == 2)
-				intializtion_imaginaire(&fractol);
+				initialization_imaginaire(&fractol);
 			else if (ac == 4)
 			{
 				fractol.julia_x = ft_atof(av[2]);
